@@ -1,6 +1,6 @@
 echo "***Cybolite Squid Proxy Installer***"
 echo "Updating System...."
-sudo apt update -y && upgrade -y
+sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt clean -y && sudo apt autoclean -y
 echo "Installing Proxy"
 read -p "Set Proxy Port : " proxy_port
 echo -e "Selected Port:\n$proxy_port")
@@ -15,8 +15,14 @@ udo ufw allow Squid
 sudo ufw allow 3128
 echo "Add 'cache deny all' just before 'http_access deny all'"
 echo "change 'http_access deny all' to 'http_access allow all' just after line '#  And finally deny all other access to this proxy'"
-echo "opening file..."
-sleep 5
+echo -ne 'opening file.                     (33%)\r'
+sleep 1
+echo -ne 'opening file..             (66%)\r'
+sleep 1
+echo -ne 'opening file...   (99%)\r'
+sleep 1
+echo -ne 'opening file...   (100%)\r'
+echo -ne '\n'
 sudo nano /etc/squid/squid.conf
 #sed -i 's/http_access deny all/http_access allow all/' /etc/squid/squid.conf
 echo "Reloading Services, Please weit..."
