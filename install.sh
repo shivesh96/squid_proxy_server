@@ -3,7 +3,7 @@ echo "Updating System...."
 sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt clean -y && sudo apt autoclean -y
 echo "Installing Proxy"
 read -p "Set Proxy Port : " proxy_port
-echo -e "Selected Port:\n$proxy_port")
+echo -e "Selected Port:\n$proxy_port"
 read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 sudo apt install squid3
 echo "Enabling Firewall..."
