@@ -33,3 +33,25 @@ echo "Done"
 
 
 #sed -i 's/# And finally deny all other access to this proxy\nhttp_access deny all/http_access allow all/g' squid.cong
+
+
+
+
+#Centos
+# sudo yum -y update
+# yum -y install squid
+# systemctl start squid
+# systemctl enable squid
+# systemctl status squid
+# sudo vi /etc/squid/squid.conf
+# echo "Add 'cache deny all' just before 'http_access deny all'"
+# http_access deny all to http_access allow all
+# sudo systemctl restart squid
+
+# https://stackoverflow.com/questions/24729024/open-firewall-port-on-centos-7
+# firewall-cmd --get-active-zones
+# firewall-cmd --zone=public --add-port=2888/tcp --permanent
+# firewall-cmd --reload
+# firewall-cmd --zone=dmz --add-port=2888/tcp --permanent
+# firewall-cmd --permanent --zone=public --add-service=http
+# history -c
